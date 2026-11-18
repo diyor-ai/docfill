@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/e450066a-bc0d-41ea-8551-7728d45255fd
+
 # docfill
 
 Extract fields from text-based PDFs, fill a Word (.docx) template, and collect every
