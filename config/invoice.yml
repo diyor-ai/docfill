@@ -1,0 +1,26 @@
+# One entry per field. 'patterns': regexes with a named group (?P<value>...); first match wins.
+# 'type': str | money | date.  'required': false = not reported as missing.
+fields:
+  invoice_number:
+    patterns:
+      - 'Invoice\s*(?:No\.?|#|Number)\s*[:\-]?\s*(?P<value>[A-Z0-9\-]+)'
+  invoice_date:
+    type: date
+    patterns:
+      - 'Invoice Date\s*[:\-]?\s*(?P<value>[0-9A-Za-z .\-/]+?)\s*$'
+      - '^Date\s*[:\-]?\s*(?P<value>[0-9A-Za-z .\-/]+?)\s*$'
+  seller:
+    patterns:
+      - 'From\s*[:\-]\s*(?P<value>.+)'
+  buyer:
+    patterns:
+      - 'Bill To\s*[:\-]\s*(?P<value>.+)'
+  tax:
+    type: money
+    required: false
+    patterns:
+      - 'VAT.*?[:\-]?\s*(?:USD|EUR|\$|€)?\s*(?P<value>[0-9][0-9.,]*)\s*$'
+  total:
+    type: money
+    patterns:
+      - 'Total(?: Due| Amount)?\s*[:\-]?\s*(?:USD|EUR|\$|€)?\s*(?P<value>[0-9][0-9.,]*)\s*$'
